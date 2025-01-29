@@ -16,13 +16,14 @@ board = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
 
 
 def is_valid_move(row, col):
-    """Check if placing a queen at (row, col) is valid."""
-    # Check the same row and column
+    "Check if placing a queen at (row, col) is valid"
+    
     for i in range(BOARD_SIZE):
         if board[row][i] == 1 or board[i][col] == 1:
             return False
 
-    # Check diagonals
+    "Check diagonals"
+
     for i in range(BOARD_SIZE):
         if (
             row - i >= 0 and col - i >= 0 and board[row - i][col - i] == 1
@@ -40,7 +41,7 @@ def is_valid_move(row, col):
 
 @app.route('/place', methods=['POST'])
 def place_queen():
-    """Place a queen on the board."""
+     "Place a queen on the board"
     data = request.json
     row = data['row']
     col = data['col']
@@ -54,7 +55,7 @@ def place_queen():
 
 @app.route('/reset', methods=['POST'])
 def reset_board():
-    """Reset the chessboard."""
+    "Reset the chessboard"
     global board
     board = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
     return jsonify({"success": True, "message": "Board reset successfully!"})
@@ -62,7 +63,7 @@ def reset_board():
 
 @app.route('/status', methods=['GET'])
 def board_status():
-    """Return the current state of the board."""
+    "Return the current state of the board"
     return jsonify({"board": board})
 
 
