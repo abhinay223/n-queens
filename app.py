@@ -11,7 +11,7 @@ def home():
 # Constants
 BOARD_SIZE = 8
 
-# Initialize the chessboard as a 2D list
+# Initializing chessboard as a 2D list
 board = [[0 for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
 
 
@@ -22,7 +22,7 @@ def is_valid_move(row, col):
         if board[row][i] == 1 or board[i][col] == 1:
             return False
 
-    "Check diagonals"
+    #Check diagonals
 
     for i in range(BOARD_SIZE):
         if (
