@@ -4,13 +4,13 @@ const statusMessage = document.getElementById('statusMessage');
 
 const BOARD_SIZE = 8;
 
-// update the status message
+// update status message
 function updateStatusMessage(message, success = true) {
     statusMessage.textContent = message;
     statusMessage.style.color = success ? 'green' : 'red';
 }
 
-// Fetch `/place` API to place a queen
+// `/place` API to place a queen
 function placeQueen(row, col, cell) {
     fetch('http://127.0.0.1:5000/place', {
         method: 'POST',
@@ -33,7 +33,7 @@ function placeQueen(row, col, cell) {
         });
 }
 
-// Fetch `/reset` API to reset the board
+// `/reset` API to reset the board
 function resetBoard() {
     fetch('http://127.0.0.1:5000/reset', {
         method: 'POST'
@@ -55,7 +55,7 @@ function resetBoard() {
         });
 }
 
-// Create the 8x8 chessboard
+// 8x8 chessboard
 function createChessboard() {
     chessboard.innerHTML = ''; // Clear existing cells
     for (let row = 0; row < BOARD_SIZE; row++) {
@@ -63,14 +63,14 @@ function createChessboard() {
             const cell = document.createElement('div');
             cell.classList.add('cell');
 
-            // Alternate cell colors
+         // cell colors
             if ((row + col) % 2 === 0) {
                 cell.style.backgroundColor = '#030303';
             } else {
                 cell.style.backgroundColor = '#eae4e4';
             }
 
-            // Add click event to place a queen
+            
             cell.addEventListener('click', () => {
                 placeQueen(row, col, cell);
             });
@@ -80,8 +80,8 @@ function createChessboard() {
     }
 }
 
-// Initialize the game
+
 createChessboard();
 
-// Attach reset button functionality
+
 resetButton.addEventListener('click', resetBoard);
