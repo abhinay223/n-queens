@@ -70,7 +70,7 @@ function createChessboard() {
                 cell.style.backgroundColor = '#eae4e4';
             }
 
-            
+            //click event to place a queen
             cell.addEventListener('click', () => {
                 placeQueen(row, col, cell);
             });
